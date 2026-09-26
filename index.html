@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BraimSec — Code security scanning, minus the noise</title>
+<meta name="description" content="BraimSec scans Python and JavaScript/TypeScript code with a deterministic engine, then an AI triage layer separates real vulnerabilities from false alarms.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z" stroke="#3fb950" stroke-width="2" fill="rgba(63,185,80,.12)"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Braim<span>Sec</span>
+    </a>
+    <ul>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a class="btn" href="mailto:braimsec.support@gmail.com?subject=Early%20access%20request"><span class="full">Request early access</span><span class="short">Get access</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge rise">Private beta — now onboarding early users</span>
+    <h1 class="rise rise-1">Code security scanning,<br><span class="grad">minus the noise.</span></h1>
+    <p class="sub rise rise-2">BraimSec scans your Python and JavaScript/TypeScript code with a deterministic detection engine, then an AI triage layer separates real vulnerabilities from false alarms — so your team fixes what matters.</p>
+    <div class="cta rise rise-3">
+      <a class="btn" href="mailto:braimsec.support@gmail.com?subject=Early%20access%20request">Request early access</a>
+      <a class="btn btn-ghost" href="pricing.html">See pricing</a>
+    </div>
+
+    <div class="terminal rise rise-3">
+      <div class="term-bar"><i></i><i></i><i></i><span>braimsec — scan session</span></div>
+      <div class="term-body" id="term"></div>
+    </div>
+    <p class="term-note">Illustrative example of a BraimSec scan report.</p>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <h2>The problem with traditional scanners</h2>
+    <p class="lead">Most SAST tools drown teams in findings. Developers learn to ignore the scanner, and real vulnerabilities hide in the noise. BraimSec was built to fix the signal, not just add more of it.</p>
+    <div class="grid3">
+      <div class="card">
+        <span class="icon">🔍</span>
+        <h3>Deterministic engine</h3>
+        <p>Hundreds of security rules plus secret detection run on every scan. Same code, same results — every time. No flaky black boxes.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🧠</span>
+        <h3>AI triage layer</h3>
+        <p>Every finding gets an independent verdict — true positive or false positive — with written reasoning you can audit. Noise is rejected before it reaches you.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📦</span>
+        <h3>SARIF out</h3>
+        <p>Results export in standard SARIF format, ready for GitHub code scanning, CI gates, and the tools your team already uses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="lead">Four steps from code to actionable findings.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Submit code</h3>
+        <p>Upload a ZIP, point at a repository, or call the API. Python and JavaScript/TypeScript supported.</p>
+      </div>
+      <div class="step">
+        <h3>Deterministic scan</h3>
+        <p>The engine runs static analysis and secret detection across your codebase in seconds.</p>
+      </div>
+      <div class="step">
+        <h3>AI triage</h3>
+        <p>Each finding is independently judged: real vulnerability or false alarm — with reasoning attached.</p>
+      </div>
+      <div class="step">
+        <h3>Act on signal</h3>
+        <p>Pull SARIF into your workflow, track findings per project, and enforce quality gates in CI.</p>
+      </div>
+    </div>
+    <div class="honest">
+      <strong>Honest status:</strong> BraimSec is in private beta. We are validating detection accuracy against independent holdout test sets before making performance claims — we would rather show you our misses than sell you a perfect score.
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Simple, transparent pricing</h2>
+    <p class="lead">Three plans. Every plan includes a 7-day free trial.</p>
+    <div class="grid3">
+      <div class="card">
+        <h3>Starter</h3>
+        <div class="price">$10<small>/mo</small></div>
+        <p class="per">or $100/year</p>
+        <p>For individual developers securing side projects and small codebases.</p>
+      </div>
+      <div class="card">
+        <h3>Pro</h3>
+        <div class="price">$40<small>/mo</small></div>
+        <p class="per">or $400/year</p>
+        <p>For teams shipping production code with API access and AI triage.</p>
+      </div>
+      <div class="card">
+        <h3>Advanced</h3>
+        <div class="price">$120<small>/mo</small></div>
+        <p class="per">or $1,200/year</p>
+        <p>For organizations needing SSO, audit logs, and dedicated support.</p>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:28px;"><a class="btn btn-ghost" href="pricing.html">Compare plans in detail</a></p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Which languages are supported?</summary>
+        <p>Python and JavaScript/TypeScript today. More languages are on the roadmap as we validate each one properly.</p>
+      </details>
+      <details>
+        <summary>How is BraimSec different from Semgrep or SonarQube?</summary>
+        <p>We build on proven detection engines and add an AI triage layer whose only job is killing false positives — with a written verdict per finding. The goal is fewer, better findings, not more findings.</p>
+      </details>
+      <details>
+        <summary>What happens to the code I submit?</summary>
+        <p>Your code is processed solely to run your scans. We do not use customer code to train machine learning models. See our <a href="privacy.html">Privacy Policy</a>.</p>
+      </details>
+      <details>
+        <summary>Is there a free trial?</summary>
+        <p>Yes — every plan includes a 7-day free trial. See <a href="pricing.html">pricing</a> and our <a href="refunds.html">Refund Policy</a>.</p>
+      </details>
+      <details>
+        <summary>Do you offer on-premise deployment?</summary>
+        <p>On-premise is on the roadmap for enterprise customers. <a href="mailto:braimsec.support@gmail.com?subject=On-premise%20inquiry">Talk to us</a> if you need it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Braim. All rights reserved.</p>
+    <div class="links">
+      <a href="pricing.html">Pricing</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refunds.html">Refunds</a>
+      <a href="mailto:braimsec.support@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var lines = [
+    { t: 'braimsec scan ./payments-api --format sarif', c: 't-cmd', type: true },
+    { t: '[engine]  26 findings · 25 rules + 1 secret · 4.2s', c: 't-dim' },
+    { t: '[triage]  judging each finding independently…', c: 't-dim' },
+    { t: '  ✓  pickle.loads() on user input .......... ', c: 't-ok', v: ['TRUE POSITIVE  0.99', 't-verdict-tp'] },
+    { t: '  ✓  shell command built from URL param .... ', c: 't-ok', v: ['TRUE POSITIVE  0.96', 't-verdict-tp'] },
+    { t: '  ✗  demo exploit script (no real sink) ..... ', c: 't-no', v: ['false positive', 't-verdict-fp'] },
+    { t: '  ✗  missing SRI on static CDN script ...... ', c: 't-no', v: ['false positive', 't-verdict-fp'] },
+    { t: '[triage]  2 real vulnerabilities · 24 rejected noise', c: 't-hi' },
+    { t: '[done]    report.sarif written — ready for CI', c: 't-dim' }
+  ];
+  var el = document.getElementById('term');
+  var li = 0;
+  function nextLine() {
+    if (li >= lines.length) {
+      var cur = document.createElement('div');
+      cur.innerHTML = '<span class="t-cmd"></span><span class="cursor"></span>';
+      el.appendChild(cur);
+      return;
+    }
+    var L = lines[li++];
+    var div = document.createElement('div');
+    el.appendChild(div);
+    if (L.type) {
+      var i = 0, span = document.createElement('span');
+      span.className = L.c; div.appendChild(span);
+      (function tick() {
+        span.textContent = L.t.slice(0, ++i);
+        if (i < L.t.length) setTimeout(tick, 28);
+        else setTimeout(nextLine, 220);
+      })();
+    } else {
+      var s = document.createElement('span');
+      s.className = L.c; s.textContent = L.t; div.appendChild(s);
+      if (L.v) {
+        var vs = document.createElement('span');
+        vs.className = L.v[1]; vs.textContent = L.v[0]; div.appendChild(vs);
+      }
+      setTimeout(nextLine, L.c === 't-dim' ? 320 : 520);
+    }
+  }
+  setTimeout(nextLine, 600);
+})();
+</script>
+</body>
+</html>
