@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — BraimSec</title>
+<meta name="description" content="BraimSec pricing: Starter $10/mo, Pro $40/mo, Advanced $120/mo. Annual billing available. 7-day free trial on every plan.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z" stroke="#3fb950" stroke-width="2" fill="rgba(63,185,80,.12)"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Braim<span>Sec</span>
+    </a>
+    <ul>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a class="btn" href="mailto:braimsec.support@gmail.com?subject=Early%20access%20request"><span class="full">Request early access</span><span class="short">Get access</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="block">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <h2 style="font-size:40px;">Pricing</h2>
+      <p class="lead" style="margin:0 auto;">Three plans. Every plan includes a 7-day free trial. Cancel anytime.</p>
+    </div>
+
+    <div class="toggle">
+      <button id="btn-mo" class="on" onclick="setBilling('mo')">Monthly</button>
+      <button id="btn-yr" onclick="setBilling('yr')">Annual <span style="font-size:12px;">(2 months free)</span></button>
+    </div>
+
+    <div class="grid3">
+      <div class="card price-card">
+        <h3>Starter</h3>
+        <div class="price"><span class="p-mo">$10</span><span class="p-yr" style="display:none;">$100</span><small class="per-mo">/mo</small><small class="per-yr" style="display:none;">/yr</small></div>
+        <p class="per">For individual developers.</p>
+        <ul>
+          <li>100 scans / month</li>
+          <li>1 project</li>
+          <li>Python + JavaScript/TypeScript</li>
+          <li>Secret detection</li>
+          <li>SARIF export</li>
+          <li>Community support</li>
+        </ul>
+        <p style="margin-top:20px;"><a class="btn btn-ghost" href="mailto:braimsec.support@gmail.com?subject=Starter%20plan">Choose Starter</a></p>
+      </div>
+
+      <div class="card price-card pop">
+        <span class="pop-tag">MOST POPULAR</span>
+        <h3>Pro</h3>
+        <div class="price"><span class="p-mo">$40</span><span class="p-yr" style="display:none;">$400</span><small class="per-mo">/mo</small><small class="per-yr" style="display:none;">/yr</small></div>
+        <p class="per">For teams shipping production code.</p>
+        <ul>
+          <li>1,000 scans / month</li>
+          <li>10 projects</li>
+          <li>Everything in Starter</li>
+          <li>AI-assisted triage with reasoning</li>
+          <li>API access</li>
+          <li>Email support</li>
+        </ul>
+        <p style="margin-top:20px;"><a class="btn" href="mailto:braimsec.support@gmail.com?subject=Pro%20plan">Choose Pro</a></p>
+      </div>
+
+      <div class="card price-card">
+        <h3>Advanced</h3>
+        <div class="price"><span class="p-mo">$120</span><span class="p-yr" style="display:none;">$1,200</span><small class="per-mo">/mo</small><small class="per-yr" style="display:none;">/yr</small></div>
+        <p class="per">For organizations with compliance needs.</p>
+        <ul>
+          <li>10,000 scans / month</li>
+          <li>Unlimited projects</li>
+          <li>Everything in Pro</li>
+          <li>SSO / SAML</li>
+          <li>Audit log</li>
+          <li>Dedicated support</li>
+        </ul>
+        <p style="margin-top:20px;"><a class="btn btn-ghost" href="mailto:braimsec.support@gmail.com?subject=Advanced%20plan">Choose Advanced</a></p>
+      </div>
+    </div>
+
+    <p class="note">Prices in USD. Taxes calculated at checkout. Local pricing in GBP, EUR, and AUD is applied automatically based on your country.<br>Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Billing questions</h2>
+    <div class="faq">
+      <details>
+        <summary>How does the 7-day free trial work?</summary>
+        <p>Every plan starts with a 7-day free trial. You can cancel during the trial and you won't be charged. If you don't cancel, billing starts automatically when the trial ends.</p>
+      </details>
+      <details>
+        <summary>Can I switch between monthly and annual?</summary>
+        <p>Yes. You can change your billing interval at any time from the customer portal; the change is prorated.</p>
+      </details>
+      <details>
+        <summary>What happens if I cancel?</summary>
+        <p>You keep access until the end of your current billing period. Your scan history and projects are preserved, and you can resubscribe anytime.</p>
+      </details>
+      <details>
+        <summary>What is your refund policy?</summary>
+        <p>You may request a full refund within 14 days of your purchase, for any reason. Read the full <a href="refunds.html">Refund Policy</a>.</p>
+      </details>
+      <details>
+        <summary>Who charges my card?</summary>
+        <p>Paddle.com — our online reseller and Merchant of Record. Paddle handles payment processing, tax calculation, and invoices. See our <a href="terms.html">Terms of Service</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Braim. All rights reserved.</p>
+    <div class="links">
+      <a href="pricing.html">Pricing</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refunds.html">Refunds</a>
+      <a href="mailto:braimsec.support@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setBilling(mode) {
+  var mo = mode === 'mo';
+  document.getElementById('btn-mo').className = mo ? 'on' : '';
+  document.getElementById('btn-yr').className = mo ? '' : 'on';
+  document.querySelectorAll('.p-mo').forEach(e => e.style.display = mo ? '' : 'none');
+  document.querySelectorAll('.p-yr').forEach(e => e.style.display = mo ? 'none' : '');
+  document.querySelectorAll('.per-mo').forEach(e => e.style.display = mo ? '' : 'none');
+  document.querySelectorAll('.per-yr').forEach(e => e.style.display = mo ? 'none' : '');
+}
+</script>
+</body>
+</html>
