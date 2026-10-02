@@ -48,7 +48,7 @@
           <li>SARIF export</li>
           <li>Community support</li>
         </ul>
-        <p style="margin-top:20px;"><a class="btn btn-ghost" href="mailto:braimsec.support@gmail.com?subject=Starter%20plan">Choose Starter</a></p>
+        <p style="margin-top:20px;"><a class="btn btn-ghost" id="choose-starter" href="https://api.braimsec.world/checkout.html?plan=starter&cycle=monthly">Choose Starter</a></p>
       </div>
 
       <div class="card price-card pop">
@@ -64,7 +64,7 @@
           <li>API access</li>
           <li>Email support</li>
         </ul>
-        <p style="margin-top:20px;"><a class="btn" href="mailto:braimsec.support@gmail.com?subject=Pro%20plan">Choose Pro</a></p>
+        <p style="margin-top:20px;"><a class="btn" id="choose-pro" href="https://api.braimsec.world/checkout.html?plan=pro&cycle=monthly">Choose Pro</a></p>
       </div>
 
       <div class="card price-card">
@@ -79,7 +79,7 @@
           <li>Audit log</li>
           <li>Dedicated support</li>
         </ul>
-        <p style="margin-top:20px;"><a class="btn btn-ghost" href="mailto:braimsec.support@gmail.com?subject=Advanced%20plan">Choose Advanced</a></p>
+        <p style="margin-top:20px;"><a class="btn btn-ghost" id="choose-advanced" href="https://api.braimsec.world/checkout.html?plan=advanced&cycle=monthly">Choose Advanced</a></p>
       </div>
     </div>
 
@@ -137,6 +137,11 @@ function setBilling(mode) {
   document.querySelectorAll('.p-yr').forEach(e => e.style.display = mo ? 'none' : '');
   document.querySelectorAll('.per-mo').forEach(e => e.style.display = mo ? '' : 'none');
   document.querySelectorAll('.per-yr').forEach(e => e.style.display = mo ? 'none' : '');
+  var cycle = mo ? 'monthly' : 'annual';
+  ['starter','pro','advanced'].forEach(function(t){
+    var a = document.getElementById('choose-'+t);
+    if (a) a.href = 'https://api.braimsec.world/checkout.html?plan=' + t + '&cycle=' + cycle;
+  });
 }
 </script>
 </body>
