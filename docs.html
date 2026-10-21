@@ -139,6 +139,15 @@ jobs:
         with:
           sarif_file: braimsec.sarif</code></pre>
 
+  <h2>GitHub pull request comments</h2>
+  <p>When a pull request targets your watched branch, BraimSec scans the PR head commit and posts the result as a comment on the PR thread — the same comment is updated on every new push to the PR, so the thread never gets spammed. Setup:</p>
+  <ol>
+    <li>Create a <strong>fine-grained personal access token</strong> with <code>Pull requests: read and write</code> on the repository.</li>
+    <li>Pass it as <code>github_token</code> when registering the repo (<span class="method post">POST</span> <code>/api/vcs/repos</code>) or later via <span class="method post">PATCH</span> <code>/api/vcs/repos/{repo_id}</code>. The token is write-only: it is stored encrypted and never returned by the API — responses carry a <code>pr_comments_enabled</code> flag instead.</li>
+    <li>In your GitHub webhook settings, enable the <strong>Pull requests</strong> event alongside pushes.</li>
+  </ol>
+  <p>The comment shows the finding count by severity and the top 10 findings (<code>file:line — severity — rule</code>), reports a clean scan when there is nothing to flag, and says so loudly when the scan itself fails. The token is used only to post comments — cloning still uses the public repository URL, and forked PR heads are cloned read-only from the fork's public URL.</p>
+
   <h2>Webhooks</h2>
   <p>Pass <code>webhook_url</code> when creating a scan and we will POST a signed JSON payload to it when the scan reaches a terminal state. Verify it with the <code>X-BraimSec-Signature: sha256=…</code> header using the <code>webhook_secret</code> returned at creation. You can also rotate the signing secret anytime via <span class="method post">POST</span> <code>/api/webhook-signing/rotate</code>.</p>
 
