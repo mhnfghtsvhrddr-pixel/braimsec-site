@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b12">
+<title>الأسعار — BraimSec</title>
+<meta name="description" content="أسعار BraimSec: ‏Starter ‏$10/شهرياً، ‏Pro ‏$40/شهرياً، ‏Advanced ‏$120/شهرياً. فوترة سنوية متاحة. تجربة مجانية 7 أيام مع كل خطة.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="rtl.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<!-- Userpilot onboarding --> (deferred: never blocks page rendering)
+<script>
+window.userpilotSettings = { token: "NX-5ad48127" };
+window.addEventListener("load", function() {
+  var s = document.createElement("script");
+  s.src = "https://js.userpilot.io/sdk/latest.js";
+  s.async = true;
+  document.head.appendChild(s);
+});
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z" stroke="#3fb950" stroke-width="2" fill="rgba(63,185,80,.12)"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Braim<span>Sec</span>
+    </a>
+    <ul>
+      <li><a href="index.html#how">كيف يعمل</a></li>
+      <li><a href="pricing.html">الأسعار</a></li>
+      <li><a href="../docs.html">التوثيق</a></li>
+      <li><a href="../pricing.html">EN</a></li>
+      <li><a class="btn" href="https://api.braimsec.world/trial"><span class="full">ابدأ فحصاً مجانياً</span><span class="short">فحص مجاني</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="block">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <h2 style="font-size:40px;">الأسعار</h2>
+      <p class="lead" style="margin:0 auto;">ثلاث خطط. كل خطة تشمل تجربة مجانية لمدة 7 أيام. ألغِ في أي وقت.</p>
+    </div>
+
+    <div class="toggle">
+      <button id="btn-mo" class="on" onclick="setBilling('mo')">شهري</button>
+      <button id="btn-yr" onclick="setBilling('yr')">سنوي <span style="font-size:12px;">(شهران مجاناً)</span></button>
+    </div>
+
+    <div class="grid3">
+      <div class="card price-card">
+        <h3>Starter</h3>
+        <div class="price"><span class="p-mo">$10</span><span class="p-yr" style="display:none;">$100</span><small class="per-mo">/شهرياً</small><small class="per-yr" style="display:none;">/سنوياً</small></div>
+        <p class="per">للمطورين الأفراد.</p>
+        <ul>
+          <li>100 فحص / شهرياً</li>
+          <li>مشروع واحد</li>
+          <li>Python + JavaScript/TypeScript</li>
+          <li>كشف الأسرار المسرّبة</li>
+          <li>تصدير SARIF</li>
+          <li>دعم المجتمع</li>
+        </ul>
+        <p style="margin-top:20px;"><a class="btn btn-ghost" id="choose-starter" href="https://api.braimsec.world/checkout.html?plan=starter&cycle=monthly">اختر Starter</a></p>
+      </div>
+
+      <div class="card price-card pop">
+        <span class="pop-tag">الأكثر شعبية</span>
+        <h3>Pro</h3>
+        <div class="price"><span class="p-mo">$40</span><span class="p-yr" style="display:none;">$400</span><small class="per-mo">/شهرياً</small><small class="per-yr" style="display:none;">/سنوياً</small></div>
+        <p class="per">للفرق التي تشحن كوداً إنتاجياً.</p>
+        <ul>
+          <li>1,000 فحص / شهرياً</li>
+          <li>10 مشاريع</li>
+          <li>كل مزايا Starter</li>
+          <li>فرز بالذكاء الاصطناعي مع تعليل</li>
+          <li>وصول API</li>
+          <li>دعم عبر الإيميل</li>
+        </ul>
+        <p style="margin-top:20px;"><a class="btn" id="choose-pro" href="https://api.braimsec.world/checkout.html?plan=pro&cycle=monthly">اختر Pro</a></p>
+      </div>
+
+      <div class="card price-card">
+        <h3>Advanced</h3>
+        <div class="price"><span class="p-mo">$120</span><span class="p-yr" style="display:none;">$1,200</span><small class="per-mo">/شهرياً</small><small class="per-yr" style="display:none;">/سنوياً</small></div>
+        <p class="per">للمؤسسات ذات متطلبات الامتثال.</p>
+        <ul>
+          <li>10,000 فحص / شهرياً</li>
+          <li>مشاريع غير محدودة</li>
+          <li>كل مزايا Pro</li>
+          <li>SSO / SAML <span class="soon">على الخارطة</span></li>
+          <li>سجل تدقيق</li>
+          <li>دعم مخصص</li>
+        </ul>
+        <p style="margin-top:20px;"><a class="btn btn-ghost" id="choose-advanced" href="https://api.braimsec.world/checkout.html?plan=advanced&cycle=monthly">اختر Advanced</a></p>
+      </div>
+    </div>
+
+    <p class="note">الأسعار بالدولار الأمريكي. مدفوعات البطاقات تُعالَج عبر وكيلنا Paddle.com (تاجر مسجّل)؛ ومدفوعات الكريبتو (USDT) عبر NOWPayments.<br>🇱🇧 في لبنان؟ يمكنك الدفع عبر <b>Whish</b> أيضاً — اختر خيار Whish عند الدفع وأرسل إلى <b dir="ltr">+96176084582</b>.</p>
+  </div>
+</section>
+
+<section class="block" id="whish">
+  <div class="wrap">
+    <h2>🇱🇧 تدفع من لبنان؟</h2>
+    <p>ادفع مباشرة عبر <b>Whish</b> — بلا بطاقة:</p>
+    <ol style="line-height:2">
+      <li>افتح تطبيق Whish وأرسل مبلغ الخطة الدقيق بالدولار إلى <b dir="ltr">+96176084582</b><br>
+        <span class="t-dim">Starter ‏$10/شهرياً · Pro ‏$40/شهرياً · Advanced ‏$120/شهرياً &nbsp;|&nbsp; سنوي: $100 · $400 · $1200</span></li>
+      <li>أرسل لقطة شاشة للتحويل إلى <a href="mailto:support@braimsec.world">support@braimsec.world</a> (وأخبرنا بالخطة).</li>
+      <li>نتحقق ونفعّل خطتك يدوياً — عادة خلال ساعات — ونرسل مفتاح الـAPI بالإيميل.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>أسئلة الفوترة</h2>
+    <div class="faq">
+      <details>
+        <summary>كيف تعمل التجربة المجانية لمدة 7 أيام؟</summary>
+        <p>كل خطة تبدأ بتجربة مجانية لمدة 7 أيام. يمكنك الإلغاء خلال التجربة ولن يُخصم منك أي مبلغ. إذا لم تُلغِ، تبدأ الفوترة تلقائياً عند انتهاء التجربة.</p>
+      </details>
+      <details>
+        <summary>هل يمكنني التبديل بين الشهري والسنوي؟</summary>
+        <p>نعم. يمكنك تغيير دورة الفوترة في أي وقت من بوابة العملاء؛ ويُحتسب الفرق تناسبياً.</p>
+      </details>
+      <details>
+        <summary>ماذا يحدث إذا ألغيت؟</summary>
+        <p>تحتفظ بالوصول حتى نهاية دورة الفوترة الحالية. يُحفَظ سجل فحوصاتك ومشاريعك، ويمكنك الاشتراك مجدداً في أي وقت.</p>
+      </details>
+      <details>
+        <summary>ما سياسة الاسترداد؟</summary>
+        <p>يمكنك طلب استرداد كامل خلال 14 يوماً من الشراء، لأي سبب. اقرأ <a href="../refunds.html">سياسة الاسترداد</a> الكاملة.</p>
+      </details>
+      <details>
+        <summary>من يخصم من بطاقتي؟</summary>
+        <p>Paddle.com — وكيلنا الإلكتروني والتاجر المسجّل. تتولى Paddle معالجة المدفوعات واحتساب الضرائب والفواتير. راجع <a href="../terms.html">شروط الخدمة</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Braim. جميع الحقوق محفوظة.</p>
+    <div class="links">
+      <a href="https://api.braimsec.world/trial">تجربة مجانية</a>
+      <a href="pricing.html">الأسعار</a>
+      <a href="../terms.html">الشروط</a>
+      <a href="../privacy.html">الخصوصية</a>
+      <a href="../refunds.html">الاسترداد</a>
+      <a href="../changelog.html">سجل التغييرات</a>
+      <a href="mailto:support@braimsec.world">تواصل</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setBilling(mode) {
+  var mo = mode === 'mo';
+  document.getElementById('btn-mo').className = mo ? 'on' : '';
+  document.getElementById('btn-yr').className = mo ? '' : 'on';
+  document.querySelectorAll('.p-mo').forEach(e => e.style.display = mo ? '' : 'none');
+  document.querySelectorAll('.p-yr').forEach(e => e.style.display = mo ? 'none' : '');
+  document.querySelectorAll('.per-mo').forEach(e => e.style.display = mo ? '' : 'none');
+  document.querySelectorAll('.per-yr').forEach(e => e.style.display = mo ? 'none' : '');
+  var cycle = mo ? 'monthly' : 'annual';
+  ['starter','pro','advanced'].forEach(function(t){
+    var a = document.getElementById('choose-'+t);
+    if (a) a.href = 'https://api.braimsec.world/checkout.html?plan=' + t + '&cycle=' + cycle;
+  });
+}
+</script>
+</body>
+</html>
