@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b12">
+<title>Documentation — BraimSec</title>
+<meta name="description" content="BraimSec API documentation: scan code via API, read results, export SARIF, and integrate with CI.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 8.5-8-6-8-11V5l8-3z" stroke="#3fb950" stroke-width="2" fill="rgba(63,185,80,.12)"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Braim<span>Sec</span>
+    </a>
+    <ul>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="docs.html">Docs</a></li>
+      <li><a class="btn" href="https://api.braimsec.world/trial"><span class="full">Start free scan</span><span class="short">Start free</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="docs">
+  <h1>Documentation</h1>
+  <p class="updated">API reference for developers · Base URL: <code>https://api.braimsec.world</code></p>
+  <p class="lead">Scan code, read findings, and export results programmatically. Everything the dashboard does is available over a REST API authenticated with your API key.</p>
+
+  <h2>Quickstart — no signup</h2>
+  <p>You can try the full scan pipeline without an account using the trial API. It scans a <strong>public</strong> GitHub repository (shallow clone, 200&nbsp;MB max) and returns a summary plus the top 5 findings.</p>
+  <h3>1. Start a trial scan</h3>
+<pre><code>curl -X POST https://api.braimsec.world/api/trial/scans \
+  -H 'Content-Type: application/json' \
+  -d '{"repo_url": "https://github.com/owner/repo"}'
+
+# {"scan_id": "a1b2c3d4e5f6", "status": "queued",
+#  "poll_url": "/api/trial/scans/a1b2c3d4e5f6"}</code></pre>
+  <h3>2. Poll for the summary</h3>
+<pre><code>curl https://api.braimsec.world/api/trial/scans/a1b2c3d4e5f6
+
+# {"scan_id": "a1b2c3d4e5f6", "status": "done",
+#  "target": "github.com/owner/repo",
+#  "severity_summary": {"error": 2, "warning": 5},
+#  "total_findings": 7,
+#  "top_findings": [
+#    {"file": "app.py", "line": 12, "rule_id": "python.lang.security.audit",
+#     "severity": "error", "message": "Possible SQL injection"}
+#  ]}</code></pre>
+  <div class="keybox"><p><strong>Trial limits:</strong> 3 scans/hour and 3/day per IP (30/day total). Trial scans never consume plan quota. Prefer the web UI? <a href="https://api.braimsec.world/trial">Try it in your browser</a>.</p></div>
+
+  <h2>Authentication</h2>
+  <p>All non-trial endpoints require your API key in the <code>X-API-Key</code> header. Your key is shown <strong>once</strong> when created — in the dashboard under API keys, or emailed to you after checkout. Never put the key in a URL.</p>
+<pre><code>curl -H 'X-API-Key: YOUR_API_KEY' https://api.braimsec.world/api/me</code></pre>
+  <p>Exceeding your plan quota returns <code>402</code>; a missing or invalid key returns <code>401</code>.</p>
+
+  <h2>Scanning your code</h2>
+  <h3>Submit a scan</h3>
+  <p><span class="method post">POST</span> <code>/api/scans</code> — multipart form. Upload a zip of your code:</p>
+<pre><code>curl -X POST https://api.braimsec.world/api/scans \
+  -H 'X-API-Key: YOUR_API_KEY' \
+  -F 'file=@myapp.zip'
+
+# {"scan_id": "a1b2c3d4e5f6", "status": "queued"}</code></pre>
+  <table>
+    <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+    <tr><td><code>file</code></td><td>file</td><td>Zip archive of the code to scan.</td></tr>
+    <tr><td><code>project_id</code></td><td>string</td><td>Optional. File the scan under one of your projects.</td></tr>
+    <tr><td><code>baseline_scan_id</code></td><td>string</td><td>Optional. Incremental rescan against a previous scan's baseline (server-local paths only; zip uploads are always full scans).</td></tr>
+    <tr><td><code>webhook_url</code></td><td>string</td><td>Optional. We POST a signed JSON payload to this URL when the scan finishes. The signing secret is returned once in the response as <code>webhook_secret</code>.</td></tr>
+  </table>
+
+  <h3>Check status</h3>
+  <p><span class="method get">GET</span> <code>/api/scans/{scan_id}</code></p>
+<pre><code>curl -H 'X-API-Key: YOUR_API_KEY' \
+  https://api.braimsec.world/api/scans/a1b2c3d4e5f6
+
+# {"id": "a1b2c3d4e5f6", "status": "done", "target_name": "myapp",
+#  "total_findings": 7,
+#  "severity_summary": {"error": 2, "warning": 3, "note": 2}}</code></pre>
+
+  <h3>Read findings</h3>
+  <p><span class="method get">GET</span> <code>/api/scans/{scan_id}/results</code> — full finding list (filter with <code>?severity=error</code>). Each finding carries file, line, column, rule id, severity, message, the detecting tool, and the AI triage verdict.</p>
+<pre><code>curl -H 'X-API-Key: YOUR_API_KEY' \
+  'https://api.braimsec.world/api/scans/a1b2c3d4e5f6/results?severity=error'
+
+# [{"id": 42, "file": "app/db.py", "line": 87, "col": 12,
+#   "rule_id": "braimsec-python-sqli", "tool": "semgrep",
+#   "severity": "error", "triage_status": "open",
+#   "message": "Possible SQL injection via string formatting",
+#   "ai_verdict": null, "has_fix": false}]</code></pre>
+
+  <h2>Exports</h2>
+  <table>
+    <tr><th>Endpoint</th><th>Format</th><th>Use</th></tr>
+    <tr><td><code>GET /api/scans/{id}/sarif</code></td><td>SARIF 2.1.0</td><td>GitHub code scanning, CI gates</td></tr>
+    <tr><td><code>GET /api/scans/{id}/results.csv</code></td><td>CSV</td><td>Spreadsheets, custom tooling</td></tr>
+    <tr><td><code>GET /api/scans/{id}/report.pdf</code></td><td>PDF</td><td>Human-readable reports</td></tr>
+    <tr><td><code>GET /api/scans/{id}/badge.svg</code></td><td>SVG</td><td>Embeddable status badge for your README</td></tr>
+  </table>
+
+  <h2>CI integration — GitHub Actions</h2>
+  <p>Gate pull requests on scan results. Store your key as a repository secret named <code>BRAIMSEC_API_KEY</code>:</p>
+<pre><code>name: BraimSec scan
+on: [push, pull_request]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zip the code
+        run: zip -r code.zip . -x '.git/*'
+      - name: Start scan
+        run: |
+          RESP=$(curl -s -X POST https://api.braimsec.world/api/scans \
+            -H "X-API-Key: ${{ secrets.BRAIMSEC_API_KEY }}" \
+            -F "file=@code.zip")
+          SCAN_ID=$(echo "$RESP" | python3 -c "import json,sys; print(json.load(sys.stdin)['scan_id'])")
+          echo "scan_id=$SCAN_ID" &gt;&gt; $GITHUB_ENV
+      - name: Wait for completion
+        run: |
+          for i in $(seq 1 30); do
+            STATUS=$(curl -s -H "X-API-Key: ${{ secrets.BRAIMSEC_API_KEY }}" \
+              https://api.braimsec.world/api/scans/$scan_id \
+              | python3 -c "import json,sys; print(json.load(sys.stdin)['status'])")
+            echo "status: $STATUS"
+            [ "$STATUS" = "done" ] &amp;&amp; break
+            sleep 20
+          done
+      - name: Export SARIF
+        run: |
+          curl -s -H "X-API-Key: ${{ secrets.BRAIMSEC_API_KEY }}" \
+            https://api.braimsec.world/api/scans/$scan_id/sarif -o braimsec.sarif
+      - name: Upload to GitHub code scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: braimsec.sarif</code></pre>
+
+  <h2>Webhooks</h2>
+  <p>Pass <code>webhook_url</code> when creating a scan and we will POST a signed JSON payload to it when the scan reaches a terminal state. Verify it with the <code>X-BraimSec-Signature: sha256=…</code> header using the <code>webhook_secret</code> returned at creation. You can also rotate the signing secret anytime via <span class="method post">POST</span> <code>/api/webhook-signing/rotate</code>.</p>
+
+  <h2>Account endpoints</h2>
+  <table>
+    <tr><th>Endpoint</th><th>Description</th></tr>
+    <tr><td><code>GET /api/plans</code></td><td>Available plans and quotas (public, no key needed)</td></tr>
+    <tr><td><code>GET /api/subscription</code></td><td>Your current plan and status</td></tr>
+    <tr><td><code>GET /api/usage</code></td><td>Scan and AI-review usage this period</td></tr>
+    <tr><td><code>GET /api/projects</code> · <span class="method post">POST</span> <code>/api/projects</code></td><td>Manage projects</td></tr>
+    <tr><td><code>GET /api/keys</code> · <span class="method post">POST</span> <code>/api/keys</code></td><td>Manage API keys (keys are shown once at creation)</td></tr>
+    <tr><td><code>GET /api/audit-log</code></td><td>Account audit trail (CSV export available)</td></tr>
+  </table>
+
+  <h2>Rate limits &amp; errors</h2>
+  <table>
+    <tr><th>Code</th><th>Meaning</th></tr>
+    <tr><td><code>401</code></td><td>Invalid or missing <code>X-API-Key</code> header</td></tr>
+    <tr><td><code>402</code></td><td>Monthly scan quota exceeded — upgrade your plan</td></tr>
+    <tr><td><code>404</code></td><td>Scan or resource not found</td></tr>
+    <tr><td><code>429</code></td><td>Rate limit exceeded — back off and retry</td></tr>
+    <tr><td><code>503</code></td><td>Scan queue temporarily unavailable — retry shortly</td></tr>
+  </table>
+
+  <h2>Need help?</h2>
+  <p>Email <a href="mailto:support@braimsec.world">support@braimsec.world</a> — a human replies. For interactive API exploration, the live OpenAPI browser is at <a href="https://api.braimsec.world/docs">api.braimsec.world/docs</a>.</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Braim. All rights reserved.</p>
+    <div class="links">
+      <a href="https://api.braimsec.world/trial">Free trial</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="docs.html">Docs</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refunds.html">Refunds</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="mailto:support@braimsec.world">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
