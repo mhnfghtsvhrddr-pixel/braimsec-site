@@ -1,0 +1,10 @@
+/* RTL overrides for the Arabic pages (loaded after style.css) */
+.terminal, .term-body, .term-bar { direction: ltr; }
+.term-body { text-align: left; }
+.card ul li { padding: 6px 28px 6px 0; }
+.card ul li::before { left: auto; right: 0; }
+.honest { border-left: none !important; border-right: 3px solid var(--accent); }
+.term-bar span { margin-left: 0; margin-right: 8px; }
+.badge-live::before { margin-right: 0; margin-left: 8px; }
+.pop-tag { direction: ltr; }
+.note b[dir="ltr"] { direction: ltr; unicode-bidi: embed; }
