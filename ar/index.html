@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b12">
+<title>BraimSec — فحص أمني للكود، بدون ضجيج</title>
+<meta name="description" content="BraimSec يفحص كود Python وJavaScript/TypeScript بمحرّك كشف حتمي، ثم طبقة فرز بالذكاء الاصطناعي تفصل الثغرات الحقيقية عن الإنذارات الكاذبة.">
+<meta property="og:title" content="BraimSec — فحص أمني للكود، بدون ضجيج.">
+<meta property="og:description" content="BraimSec يفحص كود Python وJavaScript/TypeScript بمحرّك كشف حتمي، ثم طبقة فرز بالذكاء الاصطناعي تفصل الثغرات الحقيقية عن الإنذارات الكاذبة.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://braimsec.world/ar/">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="rtl.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<!-- Userpilot onboarding v2 --> (deferred: never blocks page rendering)
+<script>
+window.userpilotSettings = { token: "NX-5ad48127" };
+window.addEventListener("load", function() {
+  var s = document.createElement("script");
+  s.src = "https://js.userpilot.io/sdk/latest.js";
+  s.async = true;
+  document.head.appendChild(s);
+});
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z" stroke="#3fb950" stroke-width="2" fill="rgba(63,185,80,.12)"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Braim<span>Sec</span>
+    </a>
+    <ul>
+      <li><a href="index.html#how">كيف يعمل</a></li>
+      <li><a href="pricing.html">الأسعار</a></li>
+      <li><a href="../docs.html">التوثيق</a></li>
+      <li><a href="../index.html">EN</a></li>
+      <li><a class="btn" href="https://api.braimsec.world/trial"><span class="full">ابدأ فحصاً مجانياً</span><span class="short">فحص مجاني</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge badge-live rise">مباشر — ابدأ بفحص مجاني</span>
+    <h1 class="rise rise-1">فحص أمني للكود،<br><span class="grad">بدون ضجيج.</span></h1>
+    <p class="sub rise rise-2">BraimSec يفحص كود Python وJavaScript/TypeScript بمحرّك كشف حتمي، ثم طبقة فرز بالذكاء الاصطناعي تفصل الثغرات الحقيقية عن الإنذارات الكاذبة — ليركّز فريقك على ما يهم فعلاً.</p>
+    <div class="cta rise rise-3">
+      <a class="btn" href="https://api.braimsec.world/trial">افحص مستودعك — مجاناً، بلا تسجيل</a>
+      <a class="btn btn-ghost" href="pricing.html">شاهد الأسعار</a>
+    </div>
+
+    <div class="terminal rise rise-3">
+      <div class="term-bar"><i></i><i></i><i></i><span>braimsec — scan session</span></div>
+      <div class="term-body" id="term"></div>
+    </div>
+    <p class="term-note">مثال توضيحي لتقرير فحص BraimSec.</p>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <h2>مشكلة الماسحات التقليدية</h2>
+    <p class="lead">معظم أدوات SAST تُغرق الفرق بالنتائج. يتعلّم المطوّرون تجاهل الماسح، وتختبئ الثغرات الحقيقية وسط الضجيج. بُني BraimSec لإصلاح الإشارة، لا لزيادة الضجيج.</p>
+    <div class="grid3">
+      <div class="card">
+        <span class="icon">🔍</span>
+        <h3>محرّك حتمي</h3>
+        <p>مئات قواعد الفحص الأمني وكشف الأسرار المسرّبة تعمل مع كل فحص. نفس الكود، نفس النتائج — دائماً. بلا صناديق سوداء متقلبة.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🧠</span>
+        <h3>فرز بالذكاء الاصطناعي</h3>
+        <p>كل نتيجة تحصل على حكم مستقل — ثغرة حقيقية أم إنذار كاذب — مع تعليل مكتوب يمكنك تدقيقه. يُرفض الضجيج قبل أن يصلك.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📦</span>
+        <h3>مخرجات SARIF</h3>
+        <p>تُصدَّر النتائج بصيغة SARIF المعيارية، جاهزة لفحص كود GitHub وبوابات CI والأدوات التي يستخدمها فريقك أصلاً.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <h2>كيف يعمل</h2>
+    <p class="lead">أربع خطوات من الكود إلى نتائج قابلة للتنفيذ.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>أرسل الكود</h3>
+        <p>ارفع ملف ZIP، أو أشر إلى مستودع، أو استدعِ الـAPI. ندعم Python وJavaScript/TypeScript.</p>
+      </div>
+      <div class="step">
+        <h3>فحص حتمي</h3>
+        <p>يشغّل المحرّك التحليل الساكن وكشف الأسرار على قاعدة كودك خلال ثوانٍ.</p>
+      </div>
+      <div class="step">
+        <h3>فرز ذكي</h3>
+        <p>يُحكم على كل نتيجة باستقلالية: ثغرة حقيقية أم إنذار كاذب — مع تعليل مُرفق.</p>
+      </div>
+      <div class="step">
+        <h3>تصرف بناءً على الإشارة</h3>
+        <p>اسحب SARIF إلى سير عملك، وتتبّع النتائج لكل مشروع، وافرض بوابات الجودة في CI.</p>
+      </div>
+    </div>
+    <div class="honest">
+      <strong>وعدنا:</strong> نتحقق من دقة الكشف مقابل مجموعات اختبار مستقلة قبل إطلاق أي ادعاء أداء — نفضّل أن نريك إخفاقاتنا على أن نبيعك درجة كمال.
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>صُنع بواسطة Braim</h2>
+    <p class="lead">BraimSec مبني ومُشغَّل بواسطة <strong>Braim</strong>، شركة برمجيات مستقلة متخصصة في أمن التطبيقات العملي. مقرّنا في لبنان ونخدم المطورين والفرق حول العالم — بأدوات صادقة، وأسعار شفافة، ودعم بشري.</p>
+    <p><a class="btn btn-ghost" href="mailto:support@braimsec.world">تواصل معنا</a></p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>أسعار بسيطة وشفافة</h2>
+    <p class="lead">ثلاث خطط. كل خطة تشمل تجربة مجانية لمدة 7 أيام.</p>
+    <div class="grid3">
+      <div class="card">
+        <h3>Starter</h3>
+        <div class="price">$10<small>/شهرياً</small></div>
+        <p class="per">أو $100/سنوياً</p>
+        <p>للمطورين الأفراد الذين يؤمّنون مشاريعهم وقواعد الكود الصغيرة.</p>
+      </div>
+      <div class="card">
+        <h3>Pro</h3>
+        <div class="price">$40<small>/شهرياً</small></div>
+        <p class="per">أو $400/سنوياً</p>
+        <p>للفرق التي تشحن كوداً إنتاجياً مع وصول API وفرز بالذكاء الاصطناعي.</p>
+      </div>
+      <div class="card">
+        <h3>Advanced</h3>
+        <div class="price">$120<small>/شهرياً</small></div>
+        <p class="per">أو $1,200/سنوياً</p>
+        <p>للمؤسسات ذات متطلبات الامتثال والدعم المخصص.</p>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:28px;"><a class="btn btn-ghost" href="pricing.html">قارن الخطط بالتفصيل</a></p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>أسئلة شائعة</h2>
+    <div class="faq">
+      <details>
+        <summary>ما اللغات المدعومة؟</summary>
+        <p>Python وJavaScript/TypeScript حالياً. المزيد من اللغات على خارطة الطريق كلما تحققنا من كل لغة كما يجب.</p>
+      </details>
+      <details>
+        <summary>ما الفرق بين BraimSec وSemgrep أو SonarQube؟</summary>
+        <p>نبني على محركات كشف مُثبتة ونضيف طبقة فرز بالذكاء الاصطناعي مهمتها الوحيدة قتل الإنذارات الكاذبة — مع حكم مكتوب لكل نتيجة. الهدف نتائج أقل وأفضل، لا نتائج أكثر.</p>
+      </details>
+      <details>
+        <summary>ماذا يحدث للكود الذي أرسله؟</summary>
+        <p>يُعالَج كودك فقط لتشغيل فحوصاتك. لا نستخدم كود العملاء لتدريب نماذج تعلم الآلة. راجع <a href="../privacy.html">سياسة الخصوصية</a>.</p>
+      </details>
+      <details>
+        <summary>هل هناك تجربة مجانية؟</summary>
+        <p>نعم — كل خطة تشمل تجربة مجانية لمدة 7 أيام. راجع <a href="pricing.html">الأسعار</a> و<a href="../refunds.html">سياسة الاسترداد</a>.</p>
+      </details>
+      <details>
+        <summary>هل توفرون نشراً محلياً (on-premise)؟</summary>
+        <p>النشر المحلي على خارطة الطريق لعملاء المؤسسات. <a href="mailto:support@braimsec.world?subject=On-premise%20inquiry">تحدث معنا</a> إذا كنت تحتاجه.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Braim. جميع الحقوق محفوظة.</p>
+    <div class="links">
+      <a href="https://api.braimsec.world/trial">تجربة مجانية</a>
+      <a href="pricing.html">الأسعار</a>
+      <a href="../terms.html">الشروط</a>
+      <a href="../privacy.html">الخصوصية</a>
+      <a href="../refunds.html">الاسترداد</a>
+      <a href="../changelog.html">سجل التغييرات</a>
+      <a href="mailto:support@braimsec.world">تواصل</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var lines = [
+    { t: 'braimsec scan ./payments-api --format sarif', c: 't-cmd', type: true },
+    { t: '[engine]  26 findings · 25 rules + 1 secret · 4.2s', c: 't-dim' },
+    { t: '[triage]  judging each finding independently…', c: 't-dim' },
+    { t: '  ✓  pickle.loads() on user input .......... ', c: 't-ok', v: ['TRUE POSITIVE  0.99', 't-verdict-tp'] },
+    { t: '  ✓  shell command built from URL param .... ', c: 't-ok', v: ['TRUE POSITIVE  0.96', 't-verdict-tp'] },
+    { t: '  ✗  demo exploit script (no real sink) ..... ', c: 't-no', v: ['false positive', 't-verdict-fp'] },
+    { t: '  ✗  missing SRI on static CDN script ...... ', c: 't-no', v: ['false positive', 't-verdict-fp'] },
+    { t: '[triage]  2 real vulnerabilities · 24 rejected noise', c: 't-hi' },
+    { t: '[done]    report.sarif written — ready for CI', c: 't-dim' }
+  ];
+  var el = document.getElementById('term');
+  var li = 0;
+  function nextLine() {
+    if (li >= lines.length) {
+      var cur = document.createElement('div');
+      cur.innerHTML = '<span class="t-cmd"></span><span class="cursor"></span>';
+      el.appendChild(cur);
+      return;
+    }
+    var L = lines[li++];
+    var div = document.createElement('div');
+    el.appendChild(div);
+    if (L.type) {
+      var i = 0, span = document.createElement('span');
+      span.className = L.c; div.appendChild(span);
+      (function tick() {
+        span.textContent = L.t.slice(0, ++i);
+        if (i < L.t.length) setTimeout(tick, 28);
+        else setTimeout(nextLine, 220);
+      })();
+    } else {
+      var s = document.createElement('span');
+      s.className = L.c; s.textContent = L.t; div.appendChild(s);
+      if (L.v) {
+        var vs = document.createElement('span');
+        vs.className = L.v[1]; vs.textContent = L.v[0]; div.appendChild(vs);
+      }
+      setTimeout(nextLine, L.c === 't-dim' ? 320 : 520);
+    }
+  }
+  setTimeout(nextLine, 600);
+})();
+</script>
+</body>
+</html>
