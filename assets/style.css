@@ -210,6 +210,43 @@ section.block p.lead { color: var(--muted); max-width: 760px; margin-bottom: 36p
 .faq details[open] summary::before { content: "− "; }
 .faq details p { color: var(--muted); margin-top: 12px; font-size: 15px; }
 
+/* ---------- docs ---------- */
+.docs { max-width: 920px; margin: 0 auto; padding: 64px 24px 90px; }
+.docs h1 { font-size: 40px; margin-bottom: 10px; letter-spacing: -1px; font-weight: 800; }
+.docs .updated { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+.docs > p.lead { color: var(--muted); font-size: 17px; max-width: 760px; margin-bottom: 20px; }
+.docs h2 { font-size: 26px; margin: 52px 0 14px; font-weight: 800; letter-spacing: -.5px; }
+.docs h3 { font-size: 18px; margin: 30px 0 10px; font-weight: 700; }
+.docs p, .docs li { color: #c2ccd9; font-size: 15.5px; margin-bottom: 10px; }
+.docs ul, .docs ol { padding-left: 24px; }
+.docs pre {
+  background: #0a0f18; border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px 22px; overflow-x: auto; margin: 18px 0;
+}
+.docs pre code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13.5px; line-height: 1.7; color: #c9d4e3;
+  background: none; padding: 0;
+}
+.docs p code, .docs li code, .docs td code {
+  background: rgba(34,211,238,.09); color: var(--cyan);
+  padding: 2px 7px; border-radius: 6px; font-size: 13.5px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+.docs table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14.5px; }
+.docs th, .docs td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.docs th { color: var(--muted); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: .5px; }
+.docs td { color: #c2ccd9; }
+.method { font-weight: 800; font-size: 12px; padding: 3px 10px; border-radius: 6px; white-space: nowrap; font-family: 'JetBrains Mono', monospace; }
+.method.get { color: var(--accent); background: rgba(63,185,80,.12); }
+.method.post { color: var(--cyan); background: rgba(34,211,238,.12); }
+.docs .keybox {
+  border-left: 3px solid var(--accent); background: var(--bg2);
+  padding: 20px 24px; border-radius: 0 10px 10px 0; margin: 26px 0;
+  border-top: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.docs .keybox p { margin: 0; color: var(--text); }
+
 /* ---------- footer ---------- */
 footer { border-top: 1px solid var(--border); margin-top: 48px; padding: 44px 0; background: var(--bg2); }
 footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; align-items: center; }
