@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b12">
+<title>Changelog — BraimSec</title>
+<meta name="description" content="BraimSec changelog: what shipped, when.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<style>
+.changelog { max-width: 840px; margin: 0 auto; padding: 64px 24px 90px; }
+.changelog h1 { font-size: 40px; margin-bottom: 10px; letter-spacing: -1px; font-weight: 800; }
+.changelog .lead { color: var(--muted); font-size: 17px; margin-bottom: 44px; }
+.release { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 28px 30px; margin-bottom: 22px; }
+.release .date { display: inline-block; font-size: 13px; font-weight: 700; color: var(--accent); border: 1px solid rgba(63,185,80,.4); border-radius: 999px; padding: 3px 14px; margin-bottom: 12px; background: rgba(63,185,80,.07); }
+.release h2 { font-size: 21px; margin-bottom: 10px; font-weight: 800; }
+.release p, .release li { color: #c2ccd9; font-size: 15px; margin-bottom: 8px; }
+.release ul { padding-left: 22px; }
+.release code { background: rgba(34,211,238,.09); color: var(--cyan); padding: 2px 7px; border-radius: 6px; font-size: 13.5px; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 8.5-8-6-8-11V5l8-3z" stroke="#3fb950" stroke-width="2" fill="rgba(63,185,80,.12)"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#3fb950" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Braim<span>Sec</span>
+    </a>
+    <ul>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="docs.html">Docs</a></li>
+      <li><a class="btn" href="https://api.braimsec.world/trial"><span class="full">Start free scan</span><span class="short">Start free</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="changelog">
+  <h1>Changelog</h1>
+  <p class="lead">What shipped, when. We deploy continuously — notable changes are listed here.</p>
+
+  <div class="release">
+    <span class="date">October 21, 2026</span>
+    <h2>Try it without signing up</h2>
+    <ul>
+      <li>Public trial scans: paste any public GitHub repo URL at <a href="https://api.braimsec.world/trial">braimsec.world/trial</a> — no account needed.</li>
+      <li>Trial API for developers: <code>POST /api/trial/scans</code> (see <a href="docs.html">Docs</a>).</li>
+      <li>Cleaner trial summaries: duplicate rule-family findings on the same line are merged, with the top 5 shown by severity.</li>
+      <li>Site refresh: official launch polish across braimsec.world.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <span class="date">October 20, 2026</span>
+    <h2>Email notifications</h2>
+    <ul>
+      <li>Transactional email is live: scan-failure alerts and trial notifications via <code>support@braimsec.world</code>.</li>
+      <li>Nightly backups verified with a successful restore test.</li>
+      <li>Interactive API reference at <a href="https://api.braimsec.world/docs">api.braimsec.world/docs</a> with strict documentation linting.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <span class="date">October 5, 2026</span>
+    <h2>Crypto payments</h2>
+    <ul>
+      <li>Pay with USDT (BNB Smart Chain) via NOWPayments — hosted invoice, automatic plan activation on confirmation.</li>
+      <li>Checkout page with plan and billing-cycle selection.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <span class="date">October 2, 2026</span>
+    <h2>Infrastructure hardening</h2>
+    <ul>
+      <li>Production moved to dedicated VPS infrastructure.</li>
+      <li>Scan runner isolated behind a scan-only API — the worker no longer touches Docker directly.</li>
+      <li>Uptime monitoring every 15 minutes with automatic service recovery.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <span class="date">October 1, 2026</span>
+    <h2>Whish payments for Lebanon</h2>
+    <ul>
+      <li>Customers in Lebanon can pay manually with Whish — no card needed. See <a href="pricing.html#whish">pricing</a>.</li>
+      <li><code>support@braimsec.world</code> email forwarding activated.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <span class="date">September 26, 2026</span>
+    <h2>Public launch</h2>
+    <ul>
+      <li>braimsec.world goes live: product pages, pricing, terms, privacy, and refund policy.</li>
+      <li>Subscription billing with Starter, Pro, and Advanced plans; 7-day free trial on every plan.</li>
+      <li>Core scanning: Python and JavaScript/TypeScript, deterministic engine plus AI triage, SARIF export.</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Braim. All rights reserved.</p>
+    <div class="links">
+      <a href="https://api.braimsec.world/trial">Free trial</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="docs.html">Docs</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refunds.html">Refunds</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="mailto:support@braimsec.world">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
